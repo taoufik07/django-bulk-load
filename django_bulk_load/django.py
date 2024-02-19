@@ -80,7 +80,7 @@ def models_to_tsv_buffer(
             elif isinstance(field_val, Json):
                 row.append(field_val.dumps(field_val.adapted))
             else:
-                row.append(str(field_val))
+                row.append(str(field_val).replace("\r", " "))
         tsv_writer.writerow(row)
     buffer.seek(0)
     return buffer
